@@ -8,8 +8,22 @@ class Person {
 
   listHobbies() {
     return this.hobbies
-      .map((hobby, index) => `${index + 1}. ${hobby}`)
+      .map(
+        (hobby, index) => `
+		${index + 1}. ${hobby}`
+      )
       .join("");
+  }
+
+  get info() {
+    return `
+			Hi, my name is: ${this.name}
+			My Hobbies are: ${this.hobbies}
+		`;
+  }
+
+  set newHobby(hobby) {
+    this.hobbies.push(hobby);
   }
 }
 
@@ -20,4 +34,11 @@ const tay = new Person({
   hobbies: ["Fishing", "Gaming"],
 });
 
+tay.listHobbies();
+
+// use getter
+console.log(tay.info);
+
+// use setter
+tay.newHobby = "Training";
 tay.listHobbies();
